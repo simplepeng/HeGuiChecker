@@ -2,6 +2,7 @@ package demo.simple.checker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.wifi.WifiManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     private val telephonyManager by lazy { getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager }
 
+    private val wifiManager by lazy { applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -35,6 +38,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun reqReadPhone(onGranted: () -> Unit) {
         PermissionUtils.permission(android.Manifest.permission.READ_PHONE_STATE)
+            .callback(object : PermissionUtils.SimpleCallback {
+
+                @RequiresApi(Build.VERSION_CODES.M)
+                @SuppressLint("HardwareIds")
+                override fun onGranted() {
+                    onGranted()
+                }
+
+                override fun onDenied() {
+                }
+            })
+            .request()
+    }
+
+    private fun reqWifi(onGranted: () -> Unit) {
+        PermissionUtils.permission(android.Manifest.permission.ACCESS_WIFI_STATE)
             .callback(object : PermissionUtils.SimpleCallback {
 
                 @RequiresApi(Build.VERSION_CODES.M)
@@ -99,6 +118,14 @@ class MainActivity : AppCompatActivity() {
         reqReadPhone {
 //            val imei = telephonyManager.getSubscriberId(telephonyManager.subscriberId)
 //            showToast("imei = $imei")
+        }
+    }
+
+    @SuppressLint("HardwareIds")
+    fun getMacAddress(view: View) {
+        reqWifi {
+            val macAddress = wifiManager.connectionInfo.macAddress
+            showToast("macAddress = $macAddress")
         }
     }
 

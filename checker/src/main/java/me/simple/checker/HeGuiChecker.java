@@ -7,6 +7,7 @@ import com.swift.sandhook.SandHookConfig;
 
 import me.simple.checker.hookers.SecureHooker;
 import me.simple.checker.hookers.TelephonyHooker;
+import me.simple.checker.hookers.WifiInfoHooker;
 
 public class HeGuiChecker {
 
@@ -20,7 +21,8 @@ public class HeGuiChecker {
             SandHookConfig.DEBUG = CheckerConfig.DEBUG;
             SandHook.addHookClass(
                     SecureHooker.class,
-                    TelephonyHooker.class
+                    TelephonyHooker.class,
+                    WifiInfoHooker.class
             );
         } catch (Throwable e) {
 //            e.printStackTrace();
