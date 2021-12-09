@@ -78,6 +78,35 @@ public class TelephonyHooker {
     }
 
     /**
-     * IMEI Hook **************************** start
+     * SubscriberId Hook **************************** start
      */
+    private static final String GET_SUBSCRIBER_ID = "getSubscriberId";
+
+    @HookMethodBackup(GET_SUBSCRIBER_ID)
+    static Method getSubscriberIdBackup;
+
+    @HookMethod(GET_SUBSCRIBER_ID)
+    public static String getSubscriberId(TelephonyManager origin) throws Throwable {
+
+        CheckerHelper.showWarn(GET_SUBSCRIBER_ID);
+
+        Object result = SandHook.callOriginByBackup(getSubscriberIdBackup, origin);
+        return ((String) result);
+    }
+
+    //--------------
+
+//    @HookMethodBackup(GET_SUBSCRIBER_ID)
+//    @MethodParams({int.class})
+//    static Method getSubscriberIdWithIntBackup;
+//
+//    @HookMethod(GET_SUBSCRIBER_ID)
+//    @MethodParams({int.class})
+//    public static String getSubscriberIdWithInt(TelephonyManager origin, int subId) throws Throwable {
+//
+//        CheckerHelper.showWarn(GET_SUBSCRIBER_ID);
+//
+//        Object result = SandHook.callOriginByBackup(getSubscriberIdWithIntBackup, origin, subId);
+//        return ((String) result);
+//    }
 }

@@ -84,6 +84,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getSubscriberId(view: View) {
+        reqReadPhone {
+            val subscriberId = telephonyManager.subscriberId
+            showToast("subscriberId = $subscriberId")
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getSubscriberIdInt(view: View) {
+        reqReadPhone {
+//            val imei = telephonyManager.getSubscriberId(telephonyManager.subscriberId)
+//            showToast("imei = $imei")
+        }
+    }
+
     private fun showToast(text: String? = "") {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }

@@ -30,10 +30,13 @@ public class SecureHooker {
         //AndroidId
         if (TextUtils.equals(Settings.Secure.ANDROID_ID, name)) {
             CheckerHelper.showWarn("AndroidId");
-            Object result = SandHook.callOriginByBackup(getStringBackup, null, resolver, name);
-            return ((String) result);
+        }
+        //
+        else {
+            CheckerHelper.showWarn(name);
         }
 
-        return "null-error";
+        Object result = SandHook.callOriginByBackup(getStringBackup, null, resolver, name);
+        return ((String) result);
     }
 }
