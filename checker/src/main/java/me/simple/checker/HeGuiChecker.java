@@ -5,20 +5,25 @@ import android.content.Context;
 import com.swift.sandhook.SandHook;
 import com.swift.sandhook.SandHookConfig;
 
-import me.simple.checker.hookers.AndroidIdHooker;
+import me.simple.checker.hookers.SecureHooker;
+import me.simple.checker.hookers.TelephonyHooker;
 
 public class HeGuiChecker {
 
     static void install(Context context) {
+        CheckerHelper.appContext = context.getApplicationContext();
         startHook();
     }
 
     private static void startHook() {
         try {
             SandHookConfig.DEBUG = CheckerConfig.DEBUG;
-            SandHook.addHookClass(AndroidIdHooker.class);
+            SandHook.addHookClass(
+                    SecureHooker.class,
+                    TelephonyHooker.class
+            );
         } catch (Throwable e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

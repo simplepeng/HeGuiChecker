@@ -12,7 +12,6 @@ public class CheckerInitiator extends ContentProvider {
     public boolean onCreate() {
         Context appContext = CheckerHelper.getAppContext(getContext());
         HeGuiChecker.install(appContext);
-        CheckerHelper.appContext = appContext;
         return true;
     }
 

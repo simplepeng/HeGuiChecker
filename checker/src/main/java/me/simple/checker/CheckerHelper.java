@@ -3,6 +3,7 @@ package me.simple.checker;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.Toast;
 
 public class CheckerHelper {
@@ -26,12 +27,14 @@ public class CheckerHelper {
     }
 
     public static void showWarn(String text) {
-        toast(text);
+        toast("非法调用了" + text);
         log(text);
     }
 
     static void toast(String text) {
-        Toast.makeText(appContext, text, Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(appContext, text, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 
     static void log(String msg) {

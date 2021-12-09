@@ -17,22 +17,19 @@ import java.lang.reflect.Method;
 import me.simple.checker.CheckerHelper;
 
 @HookClass(Settings.Secure.class)
-public class AndroidIdHooker {
+public class SecureHooker {
 
     @HookMethodBackup("getString")
     @MethodParams({ContentResolver.class, String.class})
     static Method getStringBackup;
 
     @HookMethod("getString")
-    public static String getString(
-            @Param("android.content.ContentResolver") Object resolver,
-            @Param("java.lang.String") Object name
-    ) throws Throwable {
-        String castName = ((String) name);
+    @MethodParams({ContentResolver.class, String.class})
+    public static String getString(ContentResolver resolver, String name) throws Throwable {
 
         //AndroidId
-        if (TextUtils.equals(Settings.Secure.ANDROID_ID, castName)) {
-            CheckerHelper.showWarn("非法获取了AndroidId");
+        if (TextUtils.equals(Settings.Secure.ANDROID_ID, name)) {
+            CheckerHelper.showWarn("AndroidId");
             Object result = SandHook.callOriginByBackup(getStringBackup, null, resolver, name);
             return ((String) result);
         }

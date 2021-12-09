@@ -2,7 +2,7 @@ package me.simple.checker;
 
 public class CheckerConfig {
 
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
 
 
 }
