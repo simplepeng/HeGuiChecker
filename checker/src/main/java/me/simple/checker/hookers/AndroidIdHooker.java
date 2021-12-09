@@ -1,4 +1,4 @@
-package me.simple.checker;
+package me.simple.checker.hookers;
 
 import android.content.ContentResolver;
 import android.provider.Settings;
@@ -14,6 +14,8 @@ import com.swift.sandhook.annotation.Param;
 
 import java.lang.reflect.Method;
 
+import me.simple.checker.CheckerHelper;
+
 @HookClass(Settings.Secure.class)
 public class AndroidIdHooker {
 
@@ -27,13 +29,14 @@ public class AndroidIdHooker {
             @Param("java.lang.String") Object name
     ) throws Throwable {
         String castName = ((String) name);
+
+        //AndroidId
         if (TextUtils.equals(Settings.Secure.ANDROID_ID, castName)) {
-            Log.e("AndroidIdHooker", "hooked AndroidIdHooker success ");
+            CheckerHelper.showWarn("非法获取了AndroidId");
             Object result = SandHook.callOriginByBackup(getStringBackup, null, resolver, name);
-            String androidId = ((String) result);
-            Log.e("AndroidIdHooker", "androidId == " + androidId);
-            return androidId;
+            return ((String) result);
         }
+
         return "null-error";
     }
 }
