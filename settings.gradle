@@ -11,3 +11,4 @@ dependencyResolutionManagement {
 rootProject.name = "HeGuiChecker"
 include ':app'
 include ':checker'
+include ':checker-no-op'
