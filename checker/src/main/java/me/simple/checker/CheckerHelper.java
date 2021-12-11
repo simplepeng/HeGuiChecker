@@ -2,11 +2,14 @@ package me.simple.checker;
 
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
 public class CheckerHelper {
+
+    private static final String TAG = "HeGuiChecker";
 
     public static Context appContext;
 
@@ -28,8 +31,9 @@ public class CheckerHelper {
 
     public static void showWarn(String text) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Warning!!!").append("\n").append("\n");
-        builder.append("非法调用了 ").append("\"").append(text).append("\"");
+        builder.append("Warning!!!").append("\n\n");
+        builder.append("非法使用了不合规的方法： ").append("\n\n");
+        builder.append(text);
         toast(builder.toString());
         log(text);
     }
@@ -41,6 +45,30 @@ public class CheckerHelper {
     }
 
     static void log(String msg) {
-        Log.e("HeGuiChecker", msg);
+        Log.e(TAG, "-------------------------------");
+        Log.e(TAG, "非法使用了不合规的方法：");
+        Log.e(TAG, msg);
+        Log.e(TAG, "-------------------------------");
+        Log.e(TAG, "调用栈输出：");
+        Log.e(TAG, getMethodStack());
+    }
+
+    private static String getMethodStack() {
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+
+        StringBuilder builder = new StringBuilder();
+        for (StackTraceElement element : stackTraceElements) {
+            String line = element.toString();
+
+            String className = element.getClassName();
+            boolean isChecker = !TextUtils.isEmpty(className) && className.startsWith("me.simple.checker");
+            if (isChecker) continue;
+
+            builder.append(line);
+            builder.append("\n");
+        }
+
+        return builder.toString();
+
     }
 }
