@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class CheckerHelper {
 
-    private static final String TAG = "HeGuiChecker";
+    static final String TAG = "HeGuiChecker";
 
     public static Context appContext;
 
@@ -39,12 +39,14 @@ public class CheckerHelper {
     }
 
     static void toast(String text) {
+        if (!HeGuiChecker.SHOW_TOAST) return;
         Toast toast = Toast.makeText(appContext, text, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
     static void log(String msg) {
+        if (!HeGuiChecker.SHOW_LOG) return;
         Log.e(TAG, "-------------------------------");
         Log.e(TAG, "非法使用了不合规的方法：");
         Log.e(TAG, msg);

@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.PermissionUtils
 import demo.simple.checker.databinding.ActivityMainBinding
+import me.simple.checker.HeGuiChecker
 import java.net.NetworkInterface
 
 class MainActivity : AppCompatActivity() {
@@ -212,5 +213,9 @@ class MainActivity : AppCompatActivity() {
     private fun showWarn(text: String? = "") {
         Log.d("MainActivity", text)
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    fun allowPolicy(view: View) {
+        HeGuiChecker.allow(true)
     }
 }
