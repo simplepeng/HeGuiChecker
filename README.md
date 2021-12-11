@@ -22,7 +22,8 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-
+debugImplementation 'com.github.simplepeng.HeGuiChecker:checker:v1.0.0'
+releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
 ```
 
 ## 使用
