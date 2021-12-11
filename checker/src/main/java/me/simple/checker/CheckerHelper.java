@@ -27,7 +27,10 @@ public class CheckerHelper {
     }
 
     public static void showWarn(String text) {
-        toast("非法调用了" + text);
+        StringBuilder builder = new StringBuilder();
+        builder.append("Warning!!!").append("\n").append("\n");
+        builder.append("非法调用了 ").append("\"").append(text).append("\"");
+        toast(builder.toString());
         log(text);
     }
 
