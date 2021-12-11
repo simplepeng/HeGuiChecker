@@ -20,6 +20,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('release.keystore')
+            storePassword '123456'
+            keyAlias 'simple'
+            keyPassword '123456'
+            v2SigningEnabled true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -46,5 +56,6 @@ dependencies {
 
     implementation 'com.blankj:utilcodex:1.30.6'
     //
-    implementation project(path: ':checker')
+    debugImplementation project(path: ':checker')
+    releaseImplementation project(path: ':checker-no-op')
 }
