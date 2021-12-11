@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.PermissionUtils
 import demo.simple.checker.databinding.ActivityMainBinding
+import java.net.NetworkInterface
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +35,26 @@ class MainActivity : AppCompatActivity() {
             contentResolver,
             Settings.Secure.ANDROID_ID
         )
-        showToast(id)
+        showWarn(id)
+    }
+
+    private fun reqPermission(
+        vararg permissions: String,
+        onGranted: () -> Unit
+    ) {
+        PermissionUtils.permission(*permissions)
+            .callback(object : PermissionUtils.SimpleCallback {
+
+                @RequiresApi(Build.VERSION_CODES.M)
+                @SuppressLint("HardwareIds")
+                override fun onGranted() {
+                    onGranted()
+                }
+
+                override fun onDenied() {
+                }
+            })
+            .request()
     }
 
     private fun reqReadPhone(onGranted: () -> Unit) {
@@ -72,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     fun getDeviceId(view: View) {
         reqReadPhone {
             val deviceId = telephonyManager.deviceId
-            showToast("deviceId = $deviceId")
+            showWarn("deviceId = $deviceId")
         }
     }
 
@@ -81,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     fun getDeviceIdInt(view: View) {
         reqReadPhone {
             val deviceId = telephonyManager.getDeviceId(TelephonyManager.PHONE_TYPE_GSM)
-            showToast("deviceId = $deviceId")
+            showWarn("deviceId = $deviceId")
         }
     }
 
@@ -90,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     fun getIMEI(view: View) {
         reqReadPhone {
             val imei = telephonyManager.imei
-            showToast("imei = $imei")
+            showWarn("imei = $imei")
         }
     }
 
@@ -99,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     fun getIMEIInt(view: View) {
         reqReadPhone {
             val imei = telephonyManager.getImei(TelephonyManager.PHONE_TYPE_GSM)
-            showToast("imei = $imei")
+            showWarn("imei = $imei")
         }
     }
 
@@ -108,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     fun getSubscriberId(view: View) {
         reqReadPhone {
             val subscriberId = telephonyManager.subscriberId
-            showToast("subscriberId = $subscriberId")
+            showWarn("subscriberId = $subscriberId")
         }
     }
 
@@ -125,11 +146,27 @@ class MainActivity : AppCompatActivity() {
     fun getMacAddress(view: View) {
         reqWifi {
             val macAddress = wifiManager.connectionInfo.macAddress
-            showToast("macAddress = $macAddress")
+            showWarn("macAddress = $macAddress")
         }
     }
 
-    private fun showToast(text: String? = "") {
+    @SuppressLint("HardwareIds")
+    fun getHardwareAddress(view: View) {
+        reqPermission(
+            android.Manifest.permission.READ_PHONE_STATE,
+            android.Manifest.permission.ACCESS_WIFI_STATE,
+            android.Manifest.permission.ACCESS_NETWORK_STATE
+        ) {
+            val networkInterfaces = NetworkInterface.getNetworkInterfaces() ?: return@reqPermission
+            for (nf in networkInterfaces) {
+                val hardwareAddress = nf.hardwareAddress
+                showWarn("hardwareAddress = $hardwareAddress")
+            }
+        }
+    }
+
+    private fun showWarn(text: String? = "") {
+        Log.d("MainActivity", text)
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }
