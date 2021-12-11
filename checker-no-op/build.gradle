@@ -1,13 +1,24 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+            }
+        }
+    }
 }
 
 android {
-    compileSdk 31
+    compileSdk 30
 
     defaultConfig {
-        minSdk 16
-        targetSdk 31
+        minSdk 19
+        targetSdk 30
     }
 
 
