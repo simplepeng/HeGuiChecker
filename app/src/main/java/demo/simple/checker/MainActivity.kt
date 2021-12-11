@@ -2,6 +2,8 @@ package demo.simple.checker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.net.wifi.WifiManager
 import android.os.Build
@@ -177,6 +179,33 @@ class MainActivity : AppCompatActivity() {
             val location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                 ?: return@reqPermission
             showWarn("location = ${location.latitude} -- ${location.longitude}")
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun requestLocationUpdates(view: View) {
+        reqPermission(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        ) {
+            locationManager.requestLocationUpdates(
+                LocationManager.NETWORK_PROVIDER,
+                2000,
+                1f * 1000,
+                object : LocationListener {
+                    override fun onLocationChanged(location: Location?) {
+                        Log.d("MainActivity", "onLocationChanged")
+                    }
+
+                    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
+                    }
+
+                    override fun onProviderEnabled(provider: String?) {
+                    }
+
+                    override fun onProviderDisabled(provider: String?) {
+                    }
+                })
         }
     }
 
