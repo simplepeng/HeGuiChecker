@@ -18,6 +18,7 @@
 ## 依赖
 
 ```groovy
+maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
@@ -30,7 +31,24 @@
 
 输出：
 
+![](imgs/img_log.png)
 
+显示：
+
+![](imgs/img_toast.png)
+
+当然你也可以关闭`输出`或`显示`
+
+```kotlin
+HeGuiChecker.SHOW_LOG = false
+HeGuiChecker.SHOW_TOAST = false
+```
+
+或者在`同意授权后`不再显示任何信息
+
+```kotlin
+HeGuiChecker.allow(true)
+```
 
 ## 版本
 
