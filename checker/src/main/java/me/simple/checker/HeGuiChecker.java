@@ -5,6 +5,7 @@ import android.content.Context;
 import com.swift.sandhook.SandHook;
 import com.swift.sandhook.SandHookConfig;
 
+import me.simple.checker.hookers.LocationManagerHooker;
 import me.simple.checker.hookers.NetworkHooker;
 import me.simple.checker.hookers.SecureHooker;
 import me.simple.checker.hookers.TelephonyHooker;
@@ -24,7 +25,8 @@ public class HeGuiChecker {
                     SecureHooker.class,
                     TelephonyHooker.class,
                     WifiInfoHooker.class,
-                    NetworkHooker.class
+                    NetworkHooker.class,
+                    LocationManagerHooker.class
             );
         } catch (Throwable e) {
 //            e.printStackTrace();

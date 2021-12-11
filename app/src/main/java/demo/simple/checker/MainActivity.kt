@@ -2,6 +2,7 @@ package demo.simple.checker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.location.LocationManager
 import android.net.wifi.WifiManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private val telephonyManager by lazy { getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager }
 
     private val wifiManager by lazy { applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager }
+
+    private val locationManager by lazy { applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -162,6 +165,18 @@ class MainActivity : AppCompatActivity() {
                 val hardwareAddress = nf.hardwareAddress
                 showWarn("hardwareAddress = $hardwareAddress")
             }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getLastKnownLocation(view: View) {
+        reqPermission(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        ) {
+            val location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                ?: return@reqPermission
+            showWarn("location = ${location.latitude} -- ${location.longitude}")
         }
     }
 

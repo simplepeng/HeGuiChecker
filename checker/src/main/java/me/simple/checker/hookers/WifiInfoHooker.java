@@ -19,7 +19,6 @@ public class WifiInfoHooker {
     @HookMethodBackup(GET_MAC_ADDRESS)
     static Method getMacAddressBackup;
 
-
     @HookMethod(GET_MAC_ADDRESS)
     public static String getMacAddress(WifiInfo info) throws Throwable {
 
