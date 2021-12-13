@@ -36,6 +36,8 @@ releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
 
 **请设置`targetSdk = 28`**
 
+或者：配置一个`productFlavors`或许会更方便。
+
 后记：但是我看`SandHook`的`PR`里有人提交了修复，等大佬合并吧。
 
 ## 使用
