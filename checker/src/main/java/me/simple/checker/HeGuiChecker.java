@@ -32,7 +32,7 @@ public class HeGuiChecker {
         try {
             int systemVersion = Build.VERSION.SDK_INT;
             if (systemVersion < Build.VERSION_CODES.LOLLIPOP || systemVersion > Build.VERSION_CODES.R) {
-                Log.d(CheckerHelper.TAG, "不支持的系统版本 - " + systemVersion);
+                Log.e(CheckerHelper.TAG, "不支持的系统版本 - " + systemVersion);
                 return;
             }
 

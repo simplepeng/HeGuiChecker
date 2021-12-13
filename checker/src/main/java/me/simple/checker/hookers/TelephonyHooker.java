@@ -17,6 +17,7 @@ public class TelephonyHooker {
 
     /**
      * DeviceId Hook **************************** start
+     * Api-29及以上直接调用报错
      */
     @HookMethodBackup("getDeviceId")
     static Method getDeviceIdBackup;

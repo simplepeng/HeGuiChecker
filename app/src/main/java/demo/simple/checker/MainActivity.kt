@@ -194,24 +194,24 @@ class MainActivity : AppCompatActivity() {
                 2000,
                 1f * 1000,
                 object : LocationListener {
-                    override fun onLocationChanged(location: Location?) {
+                    override fun onLocationChanged(location: Location) {
                         Log.d("MainActivity", "onLocationChanged")
                     }
 
                     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
                     }
 
-                    override fun onProviderEnabled(provider: String?) {
+                    override fun onProviderEnabled(provider: String) {
                     }
 
-                    override fun onProviderDisabled(provider: String?) {
+                    override fun onProviderDisabled(provider: String) {
                     }
                 })
         }
     }
 
     private fun showWarn(text: String? = "") {
-        Log.d("MainActivity", text)
+        Log.d("MainActivity", text!!)
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
