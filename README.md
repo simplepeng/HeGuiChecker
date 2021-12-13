@@ -28,7 +28,7 @@ releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
 
 ## ! 使用警告 !
 
-因为`SandHook`的限制的，`targetSdk>28`初始化会闪退，所有测试的时候：
+因为`SandHook`的限制的，`targetSdk>28`初始化会闪退，所以在测试的时候：
 
 **请设置`targetSdk = 28`**
 
