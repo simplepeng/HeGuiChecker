@@ -28,5 +28,5 @@ android {
 }
 
 dependencies {
-    implementation 'top.canyie.pine:core:v0.2.6'
+    implementation 'top.canyie.pine:core:0.2.6'
 }

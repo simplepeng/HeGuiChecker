@@ -1,5 +1,6 @@
 package demo.simple.checker
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reqReadPhone(onGranted: () -> Unit) {
-        PermissionUtils.permission(android.Manifest.permission.READ_PHONE_STATE)
+        PermissionUtils.permission(Manifest.permission.READ_PHONE_STATE)
             .callback(object : PermissionUtils.SimpleCallback {
 
                 @RequiresApi(Build.VERSION_CODES.M)
@@ -97,9 +98,16 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("MissingPermission")
     fun getDeviceId(view: View) {
-        reqReadPhone {
-            val deviceId = telephonyManager.deviceId
-            showWarn("deviceId = $deviceId")
+        reqPermission(
+            Manifest.permission.READ_PHONE_STATE,
+//            Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+        ) {
+            try {
+                val deviceId = telephonyManager.deviceId
+                showWarn("deviceId = $deviceId")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -148,18 +156,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("HardwareIds")
+    @SuppressLint("HardwareIds", "MissingPermission")
     fun getMacAddress(view: View) {
         reqWifi {
-            val macAddress = wifiManager.connectionInfo.macAddress
-            showWarn("macAddress = $macAddress")
+            reqPermission(Manifest.permission.ACCESS_FINE_LOCATION) {
+                val macAddress = wifiManager.connectionInfo.macAddress
+                showWarn("macAddress = $macAddress")
+            }
         }
     }
 
     @SuppressLint("HardwareIds")
     fun getHardwareAddress(view: View) {
         reqPermission(
-            android.Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_PHONE_STATE,
             android.Manifest.permission.ACCESS_WIFI_STATE,
             android.Manifest.permission.ACCESS_NETWORK_STATE
         ) {

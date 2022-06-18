@@ -2,4 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.simple.checker">
 
+    <application>
+        <provider
+            android:name=".CheckerInitiator"
+            android:authorities="${applicationId}.hegui-checker-initiator"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
 </manifest>

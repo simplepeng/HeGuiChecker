@@ -1,6 +1,15 @@
 package me.simple.checker;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.util.Log;
+
+import me.simple.checker.hookers.SecureHooker;
+import top.canyie.pine.Pine;
+import top.canyie.pine.PineConfig;
+import top.canyie.pine.callback.MethodHook;
 
 public class HeGuiChecker {
 
@@ -19,6 +28,24 @@ public class HeGuiChecker {
 
     private static void startHook() {
         try {
+            PineConfig.debug = true;
+            PineConfig.debuggable = true;
+
+//            Pine.hook(TelephonyManager.class.getDeclaredMethod("getDeviceId"), new MethodHook() {
+//                @Override
+//                public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
+//                    super.beforeCall(callFrame);
+//                    Log.d("TelephonyManager", "getDeviceId");
+//                }
+//
+//                @Override
+//                public void afterCall(Pine.CallFrame callFrame) throws Throwable {
+//                    super.afterCall(callFrame);
+//                    Log.d("TelephonyManager", "getDeviceId");
+//                }
+//            });
+
+            SecureHooker.hook();
         } catch (Throwable e) {
             e.printStackTrace();
         }
@@ -28,13 +55,8 @@ public class HeGuiChecker {
      * 是否同意了隐私政策
      */
     public static synchronized void allow(boolean allow) {
-        if (allow) {
-            SHOW_LOG = false;
-            SHOW_TOAST = false;
-        } else {
-            SHOW_LOG = true;
-            SHOW_TOAST = true;
-        }
-        isAllow = !isAllow;
+        SHOW_LOG = !allow;
+        SHOW_TOAST = !allow;
+        isAllow = allow;
     }
 }
