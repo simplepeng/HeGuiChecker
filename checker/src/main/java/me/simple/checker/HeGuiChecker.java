@@ -30,11 +30,11 @@ public class HeGuiChecker {
 
     private static void startHook() {
         try {
-            int systemVersion = Build.VERSION.SDK_INT;
-            if (systemVersion < Build.VERSION_CODES.LOLLIPOP || systemVersion > Build.VERSION_CODES.R) {
-                Log.e(CheckerHelper.TAG, "不支持的系统版本 - " + systemVersion);
-                return;
-            }
+//            int systemVersion = Build.VERSION.SDK_INT;
+//            if (systemVersion < Build.VERSION_CODES.LOLLIPOP || systemVersion > Build.VERSION_CODES.R) {
+//                Log.e(CheckerHelper.TAG, "不支持的系统版本 - " + systemVersion);
+//                return;
+//            }
 
             SandHookConfig.DEBUG = HeGuiChecker.DEBUG;
             SandHook.addHookClass(
