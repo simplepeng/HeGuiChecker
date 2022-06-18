@@ -30,12 +30,13 @@ public class CheckerHelper {
     }
 
     public static void showWarn(String text) {
+        log(text);
+
         StringBuilder builder = new StringBuilder();
-        builder.append("Warning!!!").append("\n\n");
-        builder.append("非法使用了不合规的方法： ").append("\n\n");
+        builder.append("Warning!!!");
+        builder.append("非法使用了不合规的方法： ");
         builder.append(text);
         toast(builder.toString());
-        log(text);
     }
 
     static void toast(String text) {

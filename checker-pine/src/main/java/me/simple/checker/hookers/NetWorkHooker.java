@@ -1,7 +1,6 @@
 package me.simple.checker.hookers;
 
 import java.net.NetworkInterface;
-
 import me.simple.checker.CheckerHelper;
 import top.canyie.pine.Pine;
 import top.canyie.pine.callback.MethodHook;

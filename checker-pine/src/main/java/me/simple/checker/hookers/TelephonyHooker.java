@@ -12,8 +12,10 @@ public class TelephonyHooker {
     public static void hook() throws NoSuchMethodException {
         hookGetDeviceId();
         hookGetDeviceIdWithInt();
+
         hookGetImei();
         hookGetImeiWithInt();
+
         hookGetSubscriberId();
         hookGetSubscriberIdWithInt();
     }

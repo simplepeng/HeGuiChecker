@@ -11,17 +11,17 @@ import top.canyie.pine.callback.MethodHook;
 public class SecureHooker {
 
     public static void hook() throws NoSuchMethodException {
-        hookAndroidId();
+        hookGetAndroidId();
     }
 
-    private static void hookAndroidId() throws NoSuchMethodException {
+    private static void hookGetAndroidId() throws NoSuchMethodException {
         Pine.hook(Settings.Secure.class.getDeclaredMethod("getString", ContentResolver.class, String.class), new MethodHook() {
             @Override
             public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
                 super.beforeCall(callFrame);
                 try {
                     if (TextUtils.equals(Settings.Secure.ANDROID_ID, (String) callFrame.args[1])) {
-                        CheckerHelper.showWarn("AndroidId");
+                        CheckerHelper.showWarn("getAndroidId");
                     }
                 } catch (Throwable throwable) {
                     throwable.printStackTrace();
