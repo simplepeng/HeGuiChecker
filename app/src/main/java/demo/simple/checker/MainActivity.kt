@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun reqWifi(onGranted: () -> Unit) {
-        PermissionUtils.permission(android.Manifest.permission.ACCESS_WIFI_STATE)
+        PermissionUtils.permission(Manifest.permission.ACCESS_WIFI_STATE)
             .callback(object : PermissionUtils.SimpleCallback {
 
                 @RequiresApi(Build.VERSION_CODES.M)
@@ -115,8 +115,12 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     fun getDeviceIdInt(view: View) {
         reqReadPhone {
-            val deviceId = telephonyManager.getDeviceId(TelephonyManager.PHONE_TYPE_GSM)
-            showWarn("deviceId = $deviceId")
+            try {
+                val deviceId = telephonyManager.getDeviceId(TelephonyManager.PHONE_TYPE_GSM)
+                showWarn("deviceId = $deviceId")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -124,8 +128,12 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getIMEI(view: View) {
         reqReadPhone {
-            val imei = telephonyManager.imei
-            showWarn("imei = $imei")
+            try {
+                val imei = telephonyManager.imei
+                showWarn("imei = $imei")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -133,8 +141,12 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getIMEIInt(view: View) {
         reqReadPhone {
-            val imei = telephonyManager.getImei(TelephonyManager.PHONE_TYPE_GSM)
-            showWarn("imei = $imei")
+            try {
+                val imei = telephonyManager.getImei(TelephonyManager.PHONE_TYPE_GSM)
+                showWarn("imei = $imei")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -142,8 +154,12 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getSubscriberId(view: View) {
         reqReadPhone {
-            val subscriberId = telephonyManager.subscriberId
-            showWarn("subscriberId = $subscriberId")
+            try {
+                val subscriberId = telephonyManager.subscriberId
+                showWarn("subscriberId = $subscriberId")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -151,8 +167,13 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getSubscriberIdInt(view: View) {
         reqReadPhone {
-//            val imei = telephonyManager.getSubscriberId(telephonyManager.subscriberId)
-//            showToast("imei = $imei")
+            try {
+//                val imei = telephonyManager.getSubscriberId(telephonyManager.subscriberId)
+//                showWarn("subscriberId = $subscriberId")
+            } catch (e: Throwable) {
+                e.printStackTrace()
+            }
+
         }
     }
 
@@ -170,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     fun getHardwareAddress(view: View) {
         reqPermission(
             Manifest.permission.READ_PHONE_STATE,
-            android.Manifest.permission.ACCESS_WIFI_STATE,
+            Manifest.permission.ACCESS_WIFI_STATE,
             android.Manifest.permission.ACCESS_NETWORK_STATE
         ) {
             val networkInterfaces = NetworkInterface.getNetworkInterfaces() ?: return@reqPermission
@@ -222,7 +243,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showWarn(text: String? = "") {
         Log.d("MainActivity", text!!)
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this.applicationContext, text, Toast.LENGTH_SHORT).show()
     }
 
     fun allowPolicy(view: View) {

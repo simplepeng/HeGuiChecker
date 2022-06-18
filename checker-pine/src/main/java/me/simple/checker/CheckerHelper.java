@@ -41,7 +41,7 @@ public class CheckerHelper {
     static void toast(String text) {
         if (!HeGuiChecker.SHOW_TOAST) return;
         Toast toast = Toast.makeText(appContext, text, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+//        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
