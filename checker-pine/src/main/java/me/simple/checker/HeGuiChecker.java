@@ -1,15 +1,13 @@
 package me.simple.checker;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.provider.Settings;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 
+import me.simple.checker.hookers.LocationHooker;
+import me.simple.checker.hookers.NetWorkHooker;
 import me.simple.checker.hookers.SecureHooker;
-import top.canyie.pine.Pine;
+import me.simple.checker.hookers.TelephonyHooker;
+import me.simple.checker.hookers.WifiInfoHooker;
 import top.canyie.pine.PineConfig;
-import top.canyie.pine.callback.MethodHook;
 
 public class HeGuiChecker {
 
@@ -28,24 +26,15 @@ public class HeGuiChecker {
 
     private static void startHook() {
         try {
-            PineConfig.debug = true;
-            PineConfig.debuggable = true;
-
-//            Pine.hook(TelephonyManager.class.getDeclaredMethod("getDeviceId"), new MethodHook() {
-//                @Override
-//                public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
-//                    super.beforeCall(callFrame);
-//                    Log.d("TelephonyManager", "getDeviceId");
-//                }
-//
-//                @Override
-//                public void afterCall(Pine.CallFrame callFrame) throws Throwable {
-//                    super.afterCall(callFrame);
-//                    Log.d("TelephonyManager", "getDeviceId");
-//                }
-//            });
+            PineConfig.debug = DEBUG;
+            PineConfig.debuggable = DEBUG;
 
             SecureHooker.hook();
+            TelephonyHooker.hook();
+            NetWorkHooker.hook();
+            TelephonyHooker.hook();
+            WifiInfoHooker.hook();
+            LocationHooker.hook();
         } catch (Throwable e) {
             e.printStackTrace();
         }
