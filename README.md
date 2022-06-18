@@ -2,8 +2,6 @@
 
 合规检测器-基于工信部[最新标准](http://www.gov.cn/zhengce/zhengceku/2020-08/02/content_5531975.htm)
 
-基于[Lody](https://github.com/asLody)的[SandHook](https://github.com/asLody/SandHook)开源库，已适配`4.4-11`版本，感谢大佬的无私奉献。
-
 下面是我基于`工信部文件`整理出来已经`hook`了的方法，如有其他的可以提个`issue`。
 
 | 包名                               | 方法名                                       |
@@ -15,18 +13,32 @@
 | LocationManager                    | getLastKnownLocation，requestLocationUpdates |
 | 待新增                             |                                              |
 
-## 依赖
+## 导入依赖
+
+[![](https://jitpack.io/v/simplepeng/HeGuiChecker.svg)](https://jitpack.io/#simplepeng/HeGuiChecker)
 
 ```groovy
 maven { url 'https://jitpack.io' }
 ```
+
+### pine版本-推荐
+
+基于[pine](https://github.com/canyie/pine)，适配`4.4-12.1`版本，感谢大佬的无私奉献。
+
+```groovy
+
+```
+
+### SankHook版本-不推荐
+
+基于[SandHook](https://github.com/asLody/SandHook)，已适配`4.4-11`版本，感谢大佬的无私奉献。
 
 ```groovy
 debugImplementation 'com.github.simplepeng.HeGuiChecker:checker:v1.0.0'
 releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
 ```
 
-## ! 使用警告 !
+#### ! 使用警告 !
 
 因为`SandHook`的限制的，`targetSdk>28`初始化会闪退，所以在测试的时候：
 
@@ -35,6 +47,8 @@ releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
 **请设置`targetSdk = 28`**
 
 **请设置`targetSdk = 28`**
+
+`pine`则不需要，所以更推荐`pine版本`。
 
 或者：配置一个`productFlavors`或许会更方便。
 
@@ -67,4 +81,5 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
+* v1.0.1：基于`pine`重写
 * v1.0.0：首次上传
