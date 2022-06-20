@@ -57,9 +57,16 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.30.6'
     //
 //    debugImplementation project(path: ':checker')
-    debugImplementation project(path: ':checker-pine')
-    releaseImplementation project(path: ':checker-no-op')
-    //
-//    debugImplementation 'com.github.simplepeng.HeGuiChecker:checker:v1.0.0'
-//    releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
+//    debugImplementation project(path: ':checker-pine')
+//    releaseImplementation project(path: ':checker-no-op')
+
+    def checkerV = "v1.0.1"
+
+    //pine
+    debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
+    releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
+
+    //sand-hook
+//    debugImplementation "com.github.simplepeng.HeGuiChecker:checker:$checkerV"
+//    releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
 }

@@ -21,12 +21,17 @@
 maven { url 'https://jitpack.io' }
 ```
 
+```groovy
+def checkerV = "v1.0.1"
+```
+
 ### pine版本-推荐
 
 基于[pine](https://github.com/canyie/pine)，适配`4.4-12.1`版本，感谢大佬的无私奉献。
 
 ```groovy
-
+debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
+releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
 ```
 
 ### SankHook版本-不推荐
@@ -34,8 +39,8 @@ maven { url 'https://jitpack.io' }
 基于[SandHook](https://github.com/asLody/SandHook)，已适配`4.4-11`版本，感谢大佬的无私奉献。
 
 ```groovy
-debugImplementation 'com.github.simplepeng.HeGuiChecker:checker:v1.0.0'
-releaseImplementation 'com.github.simplepeng.HeGuiChecker:checker-no-op:v1.0.0'
+debugImplementation "com.github.simplepeng.HeGuiChecker:checker:$checkerV"
+releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
 ```
 
 #### ! 使用警告 !
