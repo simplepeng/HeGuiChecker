@@ -62,7 +62,7 @@ public class PackageManagerHooker {
     private static void hookGetPackageInfo() throws NoSuchMethodException {
         try {
             Class clazz = Class.forName("android.app.ApplicationPackageManager");
-            Pine.hook(clazz.getMethod("getPackageInfo", String.class), new MethodHook() {
+            Pine.hook(clazz.getMethod("getPackageInfo", String.class, int.class), new MethodHook() {
                 @Override
                 public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
                     super.beforeCall(callFrame);
