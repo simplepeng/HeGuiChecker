@@ -1,10 +1,5 @@
 package me.simple.checker.hookers;
 
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
-
-import java.lang.reflect.Member;
-
 import me.simple.checker.CheckerHelper;
 import top.canyie.pine.Pine;
 import top.canyie.pine.callback.MethodHook;
@@ -15,6 +10,7 @@ public class PackageManagerHooker {
     public static void hook() throws NoSuchMethodException {
         hookGetInstalledPackages();
         hookGetInstalledApplications();
+        hookGetInstallerPackageName();
     }
 
     private static void hookGetInstalledPackages() throws NoSuchMethodException {
@@ -40,6 +36,21 @@ public class PackageManagerHooker {
                 public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
                     super.beforeCall(callFrame);
                     CheckerHelper.showWarn("getInstalledApplications");
+                }
+            });
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void hookGetInstallerPackageName() throws NoSuchMethodException {
+        try {
+            Class clazz = Class.forName("android.app.ApplicationPackageManager");
+            Pine.hook(clazz.getMethod("getInstallerPackageName", String.class), new MethodHook() {
+                @Override
+                public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
+                    super.beforeCall(callFrame);
+                    CheckerHelper.showWarn("getInstallerPackageName");
                 }
             });
         } catch (ClassNotFoundException e) {

@@ -250,6 +250,10 @@ class MainActivity : AppCompatActivity() {
         packageManager.getInstalledApplications(0)
     }
 
+    fun getInstallerPackageName(view: View) {
+        packageManager.getInstallerPackageName("com.tencent.mm")
+    }
+
     private fun showWarn(text: String? = "") {
         Log.d("MainActivity", text!!)
         Toast.makeText(this.applicationContext, text, Toast.LENGTH_SHORT).show()
