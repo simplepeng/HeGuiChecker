@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onDenied() {
+                    showWarn("授权失败")
                 }
             })
             .request()
@@ -239,6 +240,11 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    fun getInstallerPackageName(view: View) {
+        val packages = packageManager.getInstalledPackages(0)
     }
 
     private fun showWarn(text: String? = "") {
