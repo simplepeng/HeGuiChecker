@@ -86,5 +86,6 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
+* v1.0.2：新增`PackageManagerHooker`，hook方法`getInstalledPackages`，`getInstalledApplications`,`getInstallerPackageName`,`getPackageInfo`
 * v1.0.1：基于`pine`重写
 * v1.0.0：首次上传
