@@ -242,9 +242,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.R)
-    fun getInstallerPackageName(view: View) {
-        val packages = packageManager.getInstalledPackages(0)
+    fun getInstalledPackages(view: View) {
+        packageManager.getInstalledPackages(0)
+    }
+
+    fun getInstalledApplications(view: View) {
+        packageManager.getInstalledApplications(0)
     }
 
     private fun showWarn(text: String? = "") {
