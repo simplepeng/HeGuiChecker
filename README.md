@@ -22,7 +22,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-def checkerV = "v1.0.1"
+def checkerV = "v1.0.2"
 ```
 
 ### pine版本-推荐
@@ -86,6 +86,10 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
-* v1.0.2：新增`PackageManagerHooker`，hook方法`getInstalledPackages`，`getInstalledApplications`,`getInstallerPackageName`,`getPackageInfo`
+* v1.0.2：新增`PackageManagerHooker`，hook方法
+	* getInstalledPackages
+	* getInstalledApplications
+	* getInstallerPackageName
+	* getPackageInfo
 * v1.0.1：基于`pine`重写
 * v1.0.0：首次上传
