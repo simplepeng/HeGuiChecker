@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <com.nex3z.flowlayout.FlowLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingHorizontal="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,19 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="getAndroidId"
+            android:layout_margin="3dp"
             android:text="getAndroidId"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:onClick="getDeviceId"
             android:text="getDeviceId"
             android:textAllCaps="false"
@@ -43,20 +38,17 @@
             android:layout_height="wrap_content"
             android:onClick="getDeviceIdInt"
             android:text="getDeviceId(Int)"
+            android:layout_margin="3dp"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="getIMEI"
             android:text="getIMEI"
+            android:layout_margin="3dp"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,16 +56,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:onClick="getIMEIInt"
             android:text="getIMEI(Int)"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
@@ -81,6 +70,7 @@
             android:onClick="getSubscriberId"
             android:text="getSubscriberId"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,13 +81,9 @@
             android:text="getSubscriberId(Int)"
             android:textAllCaps="false"
             android:visibility="gone"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
@@ -105,13 +91,9 @@
             android:onClick="getMacAddress"
             android:text="getMacAddress"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
@@ -119,13 +101,9 @@
             android:onClick="getHardwareAddress"
             android:text="getHardwareAddress"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
@@ -133,13 +111,9 @@
             android:onClick="getLastKnownLocation"
             android:text="getLastKnownLocation"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@android:color/black" />
 
         <Button
             android:layout_width="wrap_content"
@@ -147,6 +121,7 @@
             android:onClick="requestLocationUpdates"
             android:text="requestLocationUpdates"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,6 +131,7 @@
             android:onClick="getInstalledPackages"
             android:text="getInstalledPackages"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,6 +141,7 @@
             android:onClick="getInstalledApplications"
             android:text="getInstalledApplications"
             android:textAllCaps="false"
+            android:layout_margin="3dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,7 +149,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="getInstallerPackageName"
+            android:layout_margin="3dp"
             android:text="getInstallerPackageName"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getPackageInfo"
+            android:layout_margin="3dp"
+            android:text="getPackageInfo"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -191,5 +179,5 @@
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.nex3z.flowlayout.FlowLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

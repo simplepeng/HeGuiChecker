@@ -11,6 +11,7 @@ public class PackageManagerHooker {
         hookGetInstalledPackages();
         hookGetInstalledApplications();
         hookGetInstallerPackageName();
+        hookGetPackageInfo();
     }
 
     private static void hookGetInstalledPackages() throws NoSuchMethodException {
@@ -51,6 +52,21 @@ public class PackageManagerHooker {
                 public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
                     super.beforeCall(callFrame);
                     CheckerHelper.showWarn("getInstallerPackageName");
+                }
+            });
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void hookGetPackageInfo() throws NoSuchMethodException {
+        try {
+            Class clazz = Class.forName("android.app.ApplicationPackageManager");
+            Pine.hook(clazz.getMethod("getPackageInfo", String.class), new MethodHook() {
+                @Override
+                public void beforeCall(Pine.CallFrame callFrame) throws Throwable {
+                    super.beforeCall(callFrame);
+                    CheckerHelper.showWarn("getPackageInfo");
                 }
             });
         } catch (ClassNotFoundException e) {
