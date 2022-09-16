@@ -4,14 +4,15 @@
 
 下面是我基于`工信部文件`整理出来已经`hook`了的方法，如有其他的可以提个`issue`。
 
-| 包名                               | 方法名                                       |
-| ---------------------------------- | -------------------------------------------- |
-| android.telephony.TelephonyManager | getDeviceId，getImei，getSubscriberId        |
-| android.net.wifi.WifiInfo          | getMacAddress                                |
-| java.net.NetworkInterface          | getHardwareAddress                           |
-| android.provider.Settings.Secure   | getString(AndroidId)                         |
-| LocationManager                    | getLastKnownLocation，requestLocationUpdates |
-| 待新增                             |                                              |
+| 包名                               | 方法名                                                       |
+| ---------------------------------- | ------------------------------------------------------------ |
+| android.telephony.TelephonyManager | getDeviceId,getImei,getSubscriberId                          |
+| android.net.wifi.WifiInfo          | getMacAddress                                                |
+| java.net.NetworkInterface          | getHardwareAddress                                           |
+| android.provider.Settings.Secure   | getString(AndroidId)                                         |
+| LocationManager                    | getLastKnownLocatio,requestLocationUpdates                   |
+| PackageManager                     | getInstalledPackages,getInstalledApplications,getInstallerPackageName,getPackageInfo |
+| 待新增                             |                                                              |
 
 ## 导入依赖
 
