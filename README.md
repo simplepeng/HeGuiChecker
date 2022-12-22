@@ -35,31 +35,6 @@ debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
 releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
 ```
 
-### SankHook版本-不推荐
-
-基于[SandHook](https://github.com/asLody/SandHook)，已适配`4.4-11`版本，感谢大佬的无私奉献。
-
-```groovy
-debugImplementation "com.github.simplepeng.HeGuiChecker:checker:$checkerV"
-releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
-```
-
-#### ! 使用警告 !
-
-因为`SandHook`的限制的，`targetSdk>28`初始化会闪退，所以在测试的时候：
-
-**请设置`targetSdk = 28`**
-
-**请设置`targetSdk = 28`**
-
-**请设置`targetSdk = 28`**
-
-`pine`则不需要，所以更推荐`pine版本`。
-
-或者：配置一个`productFlavors`或许会更方便。
-
-后记：但是我看`SandHook`的`PR`里有人提交了修复，等大佬合并吧。
-
 ## 使用
 
 基于`ContentProvider`自动初始化，无需引入初始化代码
@@ -87,6 +62,9 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
+* v1.0.3: 新增`ClipBoardManager`，hook方法
+	* hasPrimaryClip
+	* getPrimaryClip
 * v1.0.2：新增`PackageManagerHooker`，hook方法
 	* getInstalledPackages
 	* getInstalledApplications
