@@ -1,14 +1,12 @@
 package me.simple.checker.hookers;
 
 import android.content.ClipboardManager;
-import android.location.LocationListener;
-import android.location.LocationManager;
 
 import me.simple.checker.CheckerHelper;
 import top.canyie.pine.Pine;
 import top.canyie.pine.callback.MethodHook;
 
-public class ClipBoardManagerHooker {
+public class ClipboardManagerHooker {
 
     public static void hook() throws NoSuchMethodException {
         hookHasPrimaryClip();

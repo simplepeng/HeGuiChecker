@@ -12,6 +12,7 @@
 | android.provider.Settings.Secure   | getString(AndroidId)                                         |
 | LocationManager                    | getLastKnownLocatio,requestLocationUpdates                   |
 | PackageManager                     | getInstalledPackages,getInstalledApplications,getInstallerPackageName,getPackageInfo |
+| ClipboardManager                   | hasPrimaryClip,getPrimaryClip                                |
 | 待新增                             |                                                              |
 
 ## 导入依赖
@@ -23,10 +24,10 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-def checkerV = "v1.0.2"
+def checkerV = "v1.0.3"
 ```
 
-### pine版本-推荐
+### pine版本
 
 基于[pine](https://github.com/canyie/pine)，适配`4.4-12.1`版本，感谢大佬的无私奉献。
 
@@ -62,7 +63,7 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
-* v1.0.3: 新增`ClipBoardManager`，hook方法
+* v1.0.3: 新增`ClipboardManager`，hook方法
 	* hasPrimaryClip
 	* getPrimaryClip
 * v1.0.2：新增`PackageManagerHooker`，hook方法
