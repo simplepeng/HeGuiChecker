@@ -2,6 +2,7 @@ package me.simple.checker;
 
 import android.content.Context;
 
+import me.simple.checker.hookers.ClipBoardManagerHooker;
 import me.simple.checker.hookers.LocationHooker;
 import me.simple.checker.hookers.NetWorkHooker;
 import me.simple.checker.hookers.PackageManagerHooker;
@@ -37,6 +38,7 @@ public class HeGuiChecker {
             WifiInfoHooker.hook();
             LocationHooker.hook();
             PackageManagerHooker.hook();
+            ClipBoardManagerHooker.hook();
         } catch (Throwable e) {
             e.printStackTrace();
         }

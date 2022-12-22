@@ -2,6 +2,7 @@ package demo.simple.checker
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ClipboardManager
 import android.content.Context
 import android.location.Location
 import android.location.LocationListener
@@ -265,5 +266,15 @@ class MainActivity : AppCompatActivity() {
 
     fun allowPolicy(view: View) {
         HeGuiChecker.allow(true)
+    }
+
+    private val clipboardManager by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
+
+    fun hasPrimaryClip(view: View) {
+        clipboardManager.hasPrimaryClip()
+    }
+
+    fun getPrimaryClip(view: View) {
+        clipboardManager.primaryClip
     }
 }
