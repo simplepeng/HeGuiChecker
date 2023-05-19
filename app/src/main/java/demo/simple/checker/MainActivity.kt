@@ -187,12 +187,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun getSSID(view: View) {
+        reqWifi {
+            reqPermission(Manifest.permission.ACCESS_FINE_LOCATION) {
+                val ssid = wifiManager.connectionInfo.ssid
+                showWarn("ssid = $ssid")
+            }
+        }
+    }
+
     @SuppressLint("HardwareIds")
     fun getHardwareAddress(view: View) {
         reqPermission(
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.ACCESS_WIFI_STATE,
-            android.Manifest.permission.ACCESS_NETWORK_STATE
+            Manifest.permission.ACCESS_NETWORK_STATE
         ) {
             val networkInterfaces = NetworkInterface.getNetworkInterfaces() ?: return@reqPermission
             for (nf in networkInterfaces) {
