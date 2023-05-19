@@ -61,7 +61,7 @@ dependencies {
     debugImplementation project(path: ':checker-pine')
     releaseImplementation project(path: ':checker-no-op')
 
-    def checkerV = "v1.0.4"
+    def checkerV = "1.0.4"
 
     //pine
 //    debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
