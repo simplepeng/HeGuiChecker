@@ -2,6 +2,7 @@ package demo.simple.checker
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ClipboardManager
 import android.content.Context
 import android.location.Location
 import android.location.LocationListener
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onDenied() {
+                    showWarn("授权失败")
                 }
             })
             .request()
@@ -250,6 +252,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun getInstalledPackages(view: View) {
+        packageManager.getInstalledPackages(0)
+    }
+
+    fun getInstalledApplications(view: View) {
+        packageManager.getInstalledApplications(0)
+    }
+
+    fun getInstallerPackageName(view: View) {
+        packageManager.getInstallerPackageName("com.tencent.mm")
+    }
+
+    fun getPackageInfo(view: View) {
+        packageManager.getPackageInfo("com.tencent.mm", 0)
+    }
+
     private fun showWarn(text: String? = "") {
         Log.d("MainActivity", text!!)
         Toast.makeText(this.applicationContext, text, Toast.LENGTH_SHORT).show()
@@ -257,5 +275,15 @@ class MainActivity : AppCompatActivity() {
 
     fun allowPolicy(view: View) {
         HeGuiChecker.allow(true)
+    }
+
+    private val clipboardManager by lazy { getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager }
+
+    fun hasPrimaryClip(view: View) {
+        clipboardManager.hasPrimaryClip()
+    }
+
+    fun getPrimaryClip(view: View) {
+        clipboardManager.primaryClip
     }
 }
