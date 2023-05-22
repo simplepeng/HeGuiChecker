@@ -24,7 +24,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-def checkerV = "v1.0.3"
+def checkerV = "1.0.4"
 ```
 
 ### pine版本
@@ -63,13 +63,16 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
+* 1.0.4：新增`WifiInfoHooker`的hook方法
+  * getConnectionInfo
+  * hookGetSSID
 * v1.0.3: 新增`ClipboardManager`，hook方法
-	* hasPrimaryClip
-	* getPrimaryClip
+  * hasPrimaryClip
+  * getPrimaryClip
 * v1.0.2：新增`PackageManagerHooker`，hook方法
-	* getInstalledPackages
-	* getInstalledApplications
-	* getInstallerPackageName
-	* getPackageInfo
+  * getInstalledPackages
+  * getInstalledApplications
+  * getInstallerPackageName
+  * getPackageInfo
 * v1.0.1：基于`pine`重写
 * v1.0.0：首次上传
