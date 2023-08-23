@@ -34,7 +34,6 @@ public class HeGuiChecker {
             SecureHooker.hook();
             TelephonyHooker.hook();
             NetWorkHooker.hook();
-            TelephonyHooker.hook();
             WifiInfoHooker.hook();
             LocationHooker.hook();
             PackageManagerHooker.hook();
