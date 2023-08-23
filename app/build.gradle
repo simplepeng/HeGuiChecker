@@ -58,14 +58,14 @@ dependencies {
     implementation 'com.nex3z:flow-layout:1.3.3'
     //
 //    debugImplementation project(path: ':checker')
-    debugImplementation project(path: ':checker-pine')
-    releaseImplementation project(path: ':checker-no-op')
+//    debugImplementation project(path: ':checker-pine')
+//    releaseImplementation project(path: ':checker-no-op')
 
     def checkerV = "1.0.5"
 
     //pine
-//    debugImplementation 'com.github.simplepeng.HeGuiChecker:checker-pine:1.0.4'
-//    releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
+    debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
+    releaseImplementation "com.github.simplepeng.HeGuiChecker:checker-no-op:$checkerV"
 
     //sand-hook
 //    debugImplementation "com.github.simplepeng.HeGuiChecker:checker:$checkerV"
