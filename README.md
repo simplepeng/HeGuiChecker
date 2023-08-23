@@ -24,7 +24,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-def checkerV = "1.0.4"
+def checkerV = "1.0.5"
 ```
 
 ### pine版本
