@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 34
 
     viewBinding {
         enabled = true
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "demo.simple.checker"
         minSdk 21
-        targetSdk 30
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
