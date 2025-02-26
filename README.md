@@ -29,7 +29,7 @@ def checkerV = "1.1.1"
 
 ### pine版本
 
-基于[pine](https://github.com/canyie/pine)，适配`4.4-12.1`版本，感谢大佬的无私奉献。
+基于[pine](https://github.com/canyie/pine)，适配`Android 4.4(ART only) ~ 15 Beta 4 with thumb-2/arm64`版本，感谢大佬的无私奉献。
 
 ```groovy
 debugImplementation "com.github.simplepeng.HeGuiChecker:checker-pine:$checkerV"
