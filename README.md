@@ -24,7 +24,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```groovy
-def checkerV = "1.0.5"
+def checkerV = "1.1.1"
 ```
 
 ### pine版本
@@ -63,6 +63,8 @@ HeGuiChecker.allow(true)
 
 ## 版本
 
+* 1.1.1：un include `checker` module
+* 1.1.0：升级pine版本到0.3.0
 * 1.0.4：新增`WifiInfoHooker`的hook方法
   * getConnectionInfo
   * hookGetSSID
